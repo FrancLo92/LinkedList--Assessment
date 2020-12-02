@@ -124,8 +124,112 @@ public class SingleLinkedList <T> {
             count--;
         }
     }
-    
-    
-    
-    
+        
+        public int searchNode(T input){
+         
+            Node temp = head;
+            //position element is found
+            int position = -1;
+            boolean found = false;
+
+            if(count !=0){
+                //iterating through each element
+                for(int i = 0 ; i<count ; i ++){
+                    //if temp element(head to start with) equals input
+                  if(temp.value.equals(input)){
+                     //item found at ...
+                     found = true;
+                     position = i+1;
+                     break;
+                    }
+                  // if not equal go to next element.
+                    temp = temp.next;
+                }
+            }
+            //if item is not found  return -1
+            if(!found){
+                System.out.println("value not found.");
+                position = -1;
+            }         
+            return position;
+        }
+     
+     public void deleteNodeByValue(T item) {
+         
+         //creating current node  = head
+        Node current = head;
+            
+         //if list has elements
+        if(count!=0)
+        {     
+            //if there is only one element l
+            if(count==1)
+            {
+                //if curent element equals the item, than the head and tail will be set to hul
+                if(current.value.equals(item))
+                {
+                    head = null;
+                    tail = null;
+                }
+            }
+            //if list has more than 1 element
+            else
+            {
+                //while current element in list is not the tail
+                while(current.next != tail )
+                {
+                    //check if current value is equal to item
+                    if(current.value.equals(item))
+                    {
+                        //if equal replace current with current.next
+                        current = current.next;
+                        // decrease count
+                        count--;
+                        break;
+                    }
+                    //if not equal check the next element
+                    current = current.next;
+                }
+                //if tail equals the item
+                if (tail.value.equals(item))
+                {
+                    //set next element to null
+                    current.next = null;
+                    //assign current element to tail
+                    tail = current;
+                    // decrease count
+                    count--;
+                }
+            }                 
+        }        
+    }
+     
+     public void TraverseForward(){
+         //if list has elements
+         if(count !=0){
+             //if list has only 1 element
+             if(count==1){
+                 System.out.println(head.value);
+             }
+             //if list has more than one element
+             else
+             {
+                 //create current == head
+                 Node current = head;
+                 //while current node is not equal to tail
+                 while(current != tail)
+                 {
+                     //print value
+                 
+                     System.out.println(current.value);
+                     //set current node to next element
+                     current = current.next;  
+                 } 
+                 //print tail
+                 System.out.println(tail.value);                
+             }         
+         }
+     }
+
 }
+

@@ -20,13 +20,13 @@ public class Enrollment {
     private String Grade;
     private Course Course;
     
-    public Enrollment(int enrollmentID, Date dateEnrolled, String grade, String semester, Course course){
-        this.EnrollmentID = enrollmentID;
-        this.DateEnrolled = dateEnrolled;
-        this.Grade = grade;
-        this.Semester = semester;      
-        this.Course = course;
-    }
+//    public Enrollment(int enrollmentID, Date dateEnrolled, String grade, String semester, Course course){
+//        this.EnrollmentID = enrollmentID;
+//        this.DateEnrolled = dateEnrolled;
+//        this.Grade = grade;
+//        this.Semester = semester;      
+//        this.Course = course;
+//    }
 
        
     // I used the ID as the equals criteria because its value is a unique identifier
@@ -47,10 +47,20 @@ public class Enrollment {
         }
         return true;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + this.EnrollmentID;
+        return hash;
+    }
     
     //all args constructor
     public Enrollment(int enrollmentID, Date dateEnrolled, String grade, String semester){
-        this(enrollmentID, dateEnrolled,grade, semester,null);  
+        this.EnrollmentID = enrollmentID;
+        this.DateEnrolled = dateEnrolled;
+        this.Grade = grade;
+        this.Semester = semester; 
     }
     
     // no args constructor
@@ -61,7 +71,7 @@ public class Enrollment {
 
     @Override
     public String toString() {
-        return "Enrollment{" + "EnrollmentID=" + EnrollmentID + ", DateEnrolled=" + DateEnrolled +", Grade=" + Grade + ", Semester=" + Semester + ", Course=" + Course.toString() + '}';
+        return "Enrollment{" + "EnrollmentID=" + EnrollmentID + ", DateEnrolled=" + DateEnrolled +", Grade=" + Grade + ", Semester=" + Semester ;
     }
 
     public String getGrade() {
